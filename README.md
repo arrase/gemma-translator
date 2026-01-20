@@ -126,7 +126,3 @@ You can also use environment variables (prefixed with `GEMMA_`). These are usefu
 2.  **Chunking**: Splits the text into chunks defined by `chunk_size` (default 1000 chars), respecting natural boundaries like newlines and sentences to avoid breaking context.
 3.  **Translation**: Sends each chunk to the local Ollama LLM with a system prompt optimized for translation.
 4.  **Assembly**: Combines translated chunks and saves the final result.
-
-## License
-
-MIT
