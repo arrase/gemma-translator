@@ -1,6 +1,6 @@
 # Gemma Translator CLI
 
-A robust CLI tool for translating large text documents using local LLM models through Ollama. Optimized for models like `translategemma:12b` or `gemma:7b`, it employs a smart chunking strategy to handle documents of any length while preserving context and structure.
+A robust CLI tool for translating large text documents using local LLM models through Ollama. Optimized for `translategemma` models, it employs a smart chunking strategy to handle documents of any length while preserving context and structure.
 
 ## Features
 
