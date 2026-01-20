@@ -1,0 +1,22 @@
+# Gemma Translator Configuration Example
+# Copy this file to ~/.gemma-translator.yaml to use as default configuration
+
+# Ollama model name for translation
+model_name: "translategemma:12b"
+
+# Ollama API base URL
+api_base: "http://localhost:11434"
+
+# Source language settings
+source_lang: "English"
+source_code: "en"
+
+# Target language settings
+target_lang: "Spanish"
+target_code: "es-ES"
+
+# Text chunking settings
+# chunk_size: Maximum characters per chunk (adjust based on model context window)
+chunk_size: 1000
+# chunk_overlap: Overlapping characters between chunks (helps maintain context)
+chunk_overlap: 0

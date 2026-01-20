@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gemma-translator"
+version = "0.1.0"
+description = "CLI tool for translating large text documents using local LLM models through Ollama"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Developer" }
+]
+dependencies = [
+    "typer[all]>=0.9.0",
+    "langchain>=0.3.0",
+    "langchain-ollama>=0.2.0",
+    "langchain-text-splitters>=0.3.0",
+    "pyyaml>=6.0",
+    "pydantic-settings>=2.0.0",
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+gemma-translator = "gemma_translator.main:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gemma_translator"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/gemma_translator"]
