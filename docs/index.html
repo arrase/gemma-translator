@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>gemma-translator — Documentation</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="Lightweight translator for local document translation, unlimited size, privacy-first.">
+  <meta name="theme-color" content="#1e272e">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#">Gemma Translator <span>Project</span></a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Gemma Translator</h1>
+        <p>Translate documents locally, with no size limits and full privacy—perfect for large files, CI pipelines, and offline workflows.</p>
+        <div class="hero-buttons">
+          <a class="cta-button" href="#usage">Get started</a>
+          <a class="secondary-button" href="#features">See features</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <h2>Features</h2>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-header">
+              <div class="feature-icon">🔒</div>
+              <h3>Local & Private</h3>
+            </div>
+            <div class="feature-description">All translations run on your machine—no network, no remote uploads. Keep sensitive documents private.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-header">
+              <div class="feature-icon">📂</div>
+              <h3>Unlimited Size</h3>
+            </div>
+            <div class="feature-description">Designed to handle very large documents and archives without artificial size limits.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-header">
+              <div class="feature-icon">⚡</div>
+              <h3>Fast & Integrable</h3>
+            </div>
+            <div class="feature-description">Lightweight, easy to integrate into CI pipelines and local scripts.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-header">
+              <div class="feature-icon">🧭</div>
+              <h3>Model Family</h3>
+            </div>
+            <div class="feature-description">Gemma Translator uses the <strong>translategemma</strong> model family; the default model is <code>translategemma:12b</code>. Change the model in the configuration file <code>example.gemma-translator.yaml</code>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="usage">
+      <div class="container">
+        <h2>Usage</h2>
+        <div class="command-group" style="text-align:center;">
+          <div class="command-title">Real-world example</div>
+          <img src="./screenshot.png" alt="Screenshot of translation in progress" style="width:100%;max-width:960px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.25);display:block;margin:18px auto;">
+          <p style="color:#b2bec3;margin:0;">Translating “The Project Gutenberg EBook of The Adventures of Sherlock Holmes by Sir Arthur Conan Doyle” — a 128457-line document.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="installation">
+      <div class="container">
+        <h2>Installation</h2>
+        <div class="command-group">
+          <div class="command-title">Install with pipx</div>
+          <pre><code>pipx install https://github.com/arrase/gemma-translator.git</code></pre>
+          <p style="color:#b2bec3;margin-top:10px">Recommended: install with pipx to keep the tool isolated from your system Python.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Translate — Made with ❤️</p>
+    </div>
+  </footer>
+</body>
+</html>
