@@ -44,7 +44,7 @@ Create a configuration file at `~/.gemma-translator.yaml`:
 model_name: "translategemma:12b"
 api_base: "http://localhost:11434"
 source_lang: "English"
-source_code: "en-US"
+source_code: "en"
 target_lang: "Spanish"
 target_code: "es-ES"
 chunk_size: 1000
@@ -62,7 +62,7 @@ chunk_overlap: 0
 | `--source-lang, -s` | Source language name | `English` |
 | `--source-code` | Source language ISO code | `en` |
 | `--target-lang, -t` | Target language name | `Spanish` |
-| `--target-code` | Target language ISO code | `es` |
+| `--target-code` | Target language ISO code | `es-ES` |
 | `--chunk-size` | Characters per chunk | `1000` |
 | `--chunk-overlap` | Overlap between chunks | `0` |
 
