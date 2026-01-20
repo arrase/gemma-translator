@@ -7,15 +7,19 @@ by splitting text into chunks and processing them sequentially.
 from collections.abc import Generator
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage
 from langchain_ollama import ChatOllama
 
 from .config import Settings
 
 
 # Translation prompt template as specified in requirements
-SYSTEM_PROMPT_TEMPLATE = """You are a professional {source_lang} ({source_code}) to {target_lang} ({target_code}) translator. Your goal is to accurately convey the meaning and nuances of the original {source_lang} text while adhering to {target_lang} grammar, vocabulary, and cultural sensitivities.
-Produce only the {target_lang} translation, without any additional explanations or commentary. Please translate the following {source_lang} text into {target_lang}:"""
+# Note: Two blank lines before the text are mandatory for TranslateGemma
+TRANSLATION_PROMPT_TEMPLATE = """You are a professional {source_lang} ({source_code}) to {target_lang} ({target_code}) translator. Your goal is to accurately convey the meaning and nuances of the original {source_lang} text while adhering to {target_lang} grammar, vocabulary, and cultural sensitivities.
+Produce only the {target_lang} translation, without any additional explanations or commentary. Please translate the following {source_lang} text into {target_lang}:
+
+
+{text}"""
 
 
 class Translator:
@@ -39,12 +43,6 @@ class Translator:
             # Separators optimized for preserving sentence structure
             separators=["\n\n", "\n", ". ", "! ", "? ", "; ", ", ", " ", ""],
         )
-        self.system_prompt = SYSTEM_PROMPT_TEMPLATE.format(
-            source_lang=settings.source_lang,
-            source_code=settings.source_code,
-            target_lang=settings.target_lang,
-            target_code=settings.target_code,
-        )
     
     def translate_chunk(self, text: str) -> str:
         """Translate a single text chunk.
@@ -58,10 +56,16 @@ class Translator:
         Raises:
             ConnectionError: If Ollama is not available.
         """
-        messages = [
-            SystemMessage(content=self.system_prompt),
-            HumanMessage(content=text),
-        ]
+        # Build the single user prompt according to specifications
+        prompt = TRANSLATION_PROMPT_TEMPLATE.format(
+            source_lang=self.settings.source_lang,
+            source_code=self.settings.source_code,
+            target_lang=self.settings.target_lang,
+            target_code=self.settings.target_code,
+            text=text,
+        )
+        
+        messages = [HumanMessage(content=prompt)]
         
         try:
             response = self.llm.invoke(messages)
