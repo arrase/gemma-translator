@@ -12,7 +12,7 @@ A CLI tool for translating large text documents using local LLM models through O
 ## Installation
 
 ```bash
-pipx install https://github.com/arrase/gemma-translator.git
+pipx install git+https://github.com/arrase/gemma-translator.git
 ```
 
 ## Usage
