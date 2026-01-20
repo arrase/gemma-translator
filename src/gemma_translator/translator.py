@@ -1,6 +1,6 @@
 """Translation logic using LangChain and Ollama.
 
-Implements the "Divide and Conquer" strategy for translating large documents
+Implements the \"Divide and Conquer\" strategy for translating large documents
 by splitting text into chunks and processing them sequentially.
 """
 
@@ -26,8 +26,7 @@ class Translator:
     """Handles document translation using LangChain and Ollama."""
     
     def __init__(self, settings: Settings) -> None:
-        """Initialize the translator with configuration.
-        
+        """Initialize the translator with configuration.        
         Args:
             settings: Application settings instance.
         """
@@ -41,7 +40,7 @@ class Translator:
             chunk_overlap=settings.chunk_overlap,
             length_function=len,
             # Separators optimized for preserving sentence structure
-            separators=["\n\n", "\n", ". ", "! ", "? ", "; ", ", ", " ", ""],
+            separators=["\n\n", "\n", ". ", "! ", "? ", "; ", ", ", " ", ""]
         )
     
     def translate_chunk(self, text: str) -> str:
