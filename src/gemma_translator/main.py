@@ -30,21 +30,6 @@ app = typer.Typer(
 console = Console()
 
 
-def validate_input_file(input_file: Path) -> None:
-    """Validate that the input file exists and is readable.
-    
-    Args:
-        input_file: Path to the input file.
-        
-    Raises:
-        typer.BadParameter: If the file doesn't exist or isn't readable.
-    """
-    if not input_file.exists():
-        raise typer.BadParameter(f"Input file not found: {input_file}")
-    if not input_file.is_file():
-        raise typer.BadParameter(f"Not a file: {input_file}")
-
-
 def generate_output_path(input_file: Path, target_code: str) -> Path:
     """Generate output file path based on input file and target language.
     
@@ -66,7 +51,7 @@ def main(
         Path,
         typer.Argument(
             help="Path to the input text file to translate.",
-            exists=False,  # We validate manually for better error messages
+            exists=True,
         ),
     ],
     output_file: Annotated[
@@ -145,13 +130,6 @@ def main(
     Reads the input file, splits it into chunks, translates each chunk
     using the configured Ollama model, and writes the result to the output file.
     """
-    # Validate input file
-    try:
-        validate_input_file(input_file)
-    except typer.BadParameter as e:
-        console.print(f"[red]Error:[/red] {e}")
-        raise typer.Exit(1)
-    
     # Build CLI overrides dictionary
     cli_overrides = {
         "model_name": model,

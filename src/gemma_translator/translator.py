@@ -39,14 +39,11 @@ class Translator:
             # Separators optimized for preserving sentence structure
             separators=["\n\n", "\n", ". ", "! ", "? ", "; ", ", ", " ", ""],
         )
-    
-    def _build_system_prompt(self) -> str:
-        """Build the system prompt with language settings."""
-        return SYSTEM_PROMPT_TEMPLATE.format(
-            source_lang=self.settings.source_lang,
-            source_code=self.settings.source_code,
-            target_lang=self.settings.target_lang,
-            target_code=self.settings.target_code,
+        self.system_prompt = SYSTEM_PROMPT_TEMPLATE.format(
+            source_lang=settings.source_lang,
+            source_code=settings.source_code,
+            target_lang=settings.target_lang,
+            target_code=settings.target_code,
         )
     
     def translate_chunk(self, text: str) -> str:
@@ -62,7 +59,7 @@ class Translator:
             ConnectionError: If Ollama is not available.
         """
         messages = [
-            SystemMessage(content=self._build_system_prompt()),
+            SystemMessage(content=self.system_prompt),
             HumanMessage(content=text),
         ]
         
