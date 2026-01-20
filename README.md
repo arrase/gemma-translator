@@ -22,7 +22,7 @@ A robust CLI tool for translating large text documents using local LLM models th
     ollama serve
     ```
 
-2.  **Model**: Pull the default translation model (or your preferred model):
+2.  **Model**: Pull the default translation model (or your preferred translategemma model size):
     ```bash
     ollama pull translategemma:12b
     ```
