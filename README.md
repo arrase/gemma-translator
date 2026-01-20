@@ -12,13 +12,7 @@ A CLI tool for translating large text documents using local LLM models through O
 ## Installation
 
 ```bash
-# Using uv
-uv pip install -e .
-
-# Or clone and install
-git clone <repository>
-cd translate
-uv pip install -e .
+pipx install git@github.com:arrase/gemma-translator.git
 ```
 
 ## Usage
@@ -70,7 +64,3 @@ chunk_overlap: 0
 
 - Python 3.10+
 - Ollama running with the translation model
-
-## License
-
-MIT
