@@ -226,6 +226,14 @@ def main(
         raise typer.Exit(1)
     except KeyboardInterrupt:
         console.print("\n[yellow]Translation cancelled by user.[/yellow]")
+        if translated_chunks:
+            try:
+                console.print("[yellow]Saving partial translation...[/yellow]")
+                output_text = "\n\n".join(translated_chunks)
+                output_file.write_text(output_text, encoding="utf-8")
+                console.print(f"  Partial output saved to: [green]{output_file}[/green]")
+            except Exception as e:
+                console.print(f"[red]Error writing partial output file:[/red] {e}")
         raise typer.Exit(130)
     except Exception as e:
         console.print(f"\n[red]Translation error:[/red] {e}")

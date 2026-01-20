@@ -15,9 +15,7 @@ A CLI tool for translating large text documents using local LLM models through O
 pipx install git+https://github.com/arrase/gemma-translator.git
 ```
 
-## Usage
-
-### Basic Usage
+## Basic Usage
 
 ```bash
 # Translate a file (uses default configuration)
@@ -30,7 +28,7 @@ gemma-translator input.txt -o translated.txt
 gemma-translator input.txt --source-lang English --target-lang Spanish
 ```
 
-### Configuration
+## Configuration
 
 Create a configuration file at `~/.gemma-translator.yaml`:
 
