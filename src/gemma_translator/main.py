@@ -40,6 +40,7 @@ def main(
     source_code: Annotated[Optional[str], typer.Option("--source-code")] = None,
     target_lang: Annotated[Optional[str], typer.Option("--target-lang", "-t")] = None,
     target_code: Annotated[Optional[str], typer.Option("--target-code")] = None,
+    context_size: Annotated[Optional[int], typer.Option("--context-size", help="Context window size in tokens for Ollama")] = None,
     chunk_size: Annotated[Optional[int], typer.Option("--chunk-size")] = None,
     chunk_overlap: Annotated[Optional[int], typer.Option("--chunk-overlap")] = None,
 ) -> None:
@@ -47,7 +48,8 @@ def main(
     cli_overrides = {
         "model_name": model, "api_base": api_base, "source_lang": source_lang,
         "source_code": source_code, "target_lang": target_lang,
-        "target_code": target_code, "chunk_size": chunk_size, "chunk_overlap": chunk_overlap,
+        "target_code": target_code, "context_size": context_size,
+        "chunk_size": chunk_size, "chunk_overlap": chunk_overlap,
     }
     
     try:
@@ -56,6 +58,7 @@ def main(
         
         console.print(f"\n[bold blue]Gemma Translator[/bold blue]\n" 
                       f"  Model: [cyan]{settings.model_name}[/cyan] | API: [cyan]{settings.api_base}[/cyan]\n" 
+                      f"  Context: [cyan]{settings.context_size} tokens[/cyan] | Chunk size: [cyan]{settings.chunk_size} chars[/cyan]\n"
                       f"  Translation: [cyan]{settings.source_lang} → {settings.target_lang}[/cyan]\n" 
                       f"  Input: [green]{input_file}[/green] | Output: [green]{out}[/green]\n")
 

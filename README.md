@@ -89,9 +89,12 @@ source_lang: "English"
 source_code: "en"
 target_lang: "Spanish"
 target_code: "es"
+context_size: 50000
 chunk_size: 1000
 chunk_overlap: 0
 ```
+
+`context_size` is passed to Ollama as `num_ctx`, while `chunk_size` remains a character-based splitter setting.
 
 ### Environment Variables
 
@@ -103,6 +106,7 @@ You can also use environment variables (prefixed with `GEMMA_`). These are usefu
 | `GEMMA_API_BASE` | `api_base` |
 | `GEMMA_SOURCE_LANG` | `source_lang` |
 | `GEMMA_TARGET_LANG` | `target_lang` |
+| `GEMMA_CONTEXT_SIZE` | `context_size` |
 | `GEMMA_CHUNK_SIZE` | `chunk_size` |
 
 ### CLI Options Reference
@@ -117,6 +121,7 @@ You can also use environment variables (prefixed with `GEMMA_`). These are usefu
 | `--source-code` | | Source ISO code | `en` |
 | `--target-lang` | `-t` | Target language name | `Spanish` |
 | `--target-code` | | Target ISO code | `es` |
+| `--context-size` | | Context window size in tokens for Ollama | `50000` |
 | `--chunk-size` | | Characters per chunk | `1000` |
 | `--chunk-overlap` | | Overlap chars | `0` |
 
@@ -124,5 +129,9 @@ You can also use environment variables (prefixed with `GEMMA_`). These are usefu
 
 1.  **Ingestion**: Reads the input text file.
 2.  **Chunking**: Splits the text into chunks defined by `chunk_size` (default 1000 chars), respecting natural boundaries like newlines and sentences to avoid breaking context.
-3.  **Translation**: Sends each chunk to the local Ollama LLM with a system prompt optimized for translation.
+3.  **Translation**: Sends each chunk to the local Ollama LLM with a prompt optimized for translation and configures Ollama's context window through `context_size`/`num_ctx`.
 4.  **Assembly**: Combines translated chunks and saves the final result.
+
+## Verified Behavior
+
+The current release flow has been verified locally with the workspace `.venv` and Ollama by translating a three-paragraph English text into Spanish using `context_size: 50000` from a YAML config file.

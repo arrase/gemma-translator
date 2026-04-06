@@ -24,6 +24,7 @@ class Translator:
         self.llm = ChatOllama(
             model=settings.model_name,
             base_url=settings.api_base,
+            num_ctx=settings.context_size,
         )
         self.splitter = RecursiveCharacterTextSplitter(
             chunk_size=settings.chunk_size,

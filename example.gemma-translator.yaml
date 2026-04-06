@@ -15,8 +15,11 @@ source_code: "en"
 target_lang: "Spanish"
 target_code: "es-ES"
 
+# Ollama context window size in tokens
+context_size: 50000
+
 # Text chunking settings
-# chunk_size: Maximum characters per chunk (adjust based on model context window)
+# chunk_size: Maximum characters per chunk (in characters, not tokens)
 chunk_size: 1000
 # chunk_overlap: Overlapping characters between chunks (helps maintain context)
 chunk_overlap: 0

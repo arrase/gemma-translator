@@ -15,8 +15,9 @@ class Settings(BaseSettings):
     source_code: str = "en"
     target_lang: str = "Spanish"
     target_code: str = "es"
-    chunk_size: int = 1000
-    chunk_overlap: int = 0
+    context_size: int = Field(default=50000, gt=0, description="Ollama context window size in tokens")
+    chunk_size: int = Field(default=1000, gt=0, description="Maximum characters per chunk")
+    chunk_overlap: int = Field(default=0, ge=0, description="Overlapping characters between chunks")
 
 def load_config(config_path: Path, cli_overrides: dict[str, Any] | None = None) -> Settings:
     """Load and merge configuration from YAML, Env, and CLI."""
