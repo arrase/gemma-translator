@@ -131,7 +131,3 @@ You can also use environment variables (prefixed with `GEMMA_`). These are usefu
 2.  **Chunking**: Splits the text into chunks defined by `chunk_size` (default 1000 chars), respecting natural boundaries like newlines and sentences to avoid breaking context.
 3.  **Translation**: Sends each chunk to the local Ollama LLM with a prompt optimized for translation and configures Ollama's context window through `context_size`/`num_ctx`.
 4.  **Assembly**: Combines translated chunks and saves the final result.
-
-## Verified Behavior
-
-The current release flow has been verified locally with the workspace `.venv` and Ollama by translating a three-paragraph English text into Spanish using `context_size: 50000` from a YAML config file.
